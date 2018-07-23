@@ -4,14 +4,15 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Eloquent\SoftDeletes;
-class CreateUsersTable extends Migration
+
+class CreateResultsTable extends Migration
 {
     public function up()
     {
-        Schema::create('users', function (Blueprint $table) {
+        Schema::create('results', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('firstName');
-            $table->string('lastName');
+            $table->unsignedInteger('userId');
+            $table->unsignedInteger('moduleId');
             $table->timestamps();
             $table->softDeletes();
         });
@@ -19,6 +20,6 @@ class CreateUsersTable extends Migration
 
     public function down()
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('results');
     }
 }
